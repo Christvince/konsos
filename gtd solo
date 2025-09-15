@@ -1,0 +1,62 @@
+        -- Fungsi Solo
+        local function runSolo() 
+            local Players=game:GetService("Players") 
+            local ReplicatedStorage=game:GetService("ReplicatedStorage") 
+            local player=Players.LocalPlayer 
+            local pg=player:WaitForChild("PlayerGui") 
+            local RestartGame=ReplicatedStorage.RemoteFunctions.RestartGame 
+            local PlaceDifficultyVote=ReplicatedStorage.RemoteFunctions.PlaceDifficultyVote 
+            local PlaceUnit=ReplicatedStorage.RemoteFunctions.PlaceUnit 
+            local ChangeTickSpeed=ReplicatedStorage.RemoteFunctions.ChangeTickSpeed 
+
+            if pg:FindFirstChild("CustomCreditGui") then pg.CustomCreditGui:Destroy() end 
+            local sg=Instance.new("ScreenGui",pg) 
+            sg.Name="CustomCreditGui" 
+            sg.ResetOnSpawn=false 
+            local t=Instance.new("TextLabel",sg) 
+            t.Size=UDim2.new(1,0,0,50) 
+            t.Position=UDim2.new(0,0,0.2,0) 
+            t.BackgroundTransparency=1 
+            t.Text="CREATED BY FR3NCH" 
+            t.TextColor3=Color3.fromRGB(255,0,0) 
+            t.TextStrokeTransparency=0.5 
+            t.TextScaled=true 
+            t.Font=Enum.Font.GothamBold 
+            task.delay(10,function() if sg then sg:Destroy() end end) 
+
+            PlaceDifficultyVote:InvokeServer("dif_impossible") 
+            task.wait(6) 
+            pcall(function()ChangeTickSpeed:InvokeServer(3)end) 
+            task.wait(22) 
+
+            while true do 
+                if pg:FindFirstChild("CustomCreditGui") then pg.CustomCreditGui:Destroy() end 
+                local sg2=Instance.new("ScreenGui",pg) 
+                sg2.Name="CustomCreditGui" 
+                sg2.ResetOnSpawn=false 
+                local t2=Instance.new("TextLabel",sg2) 
+                t2.Size=UDim2.new(1,0,0,50) 
+                t2.Position=UDim2.new(0,0,0.2,0) 
+                t2.BackgroundTransparency=1 
+                t2.Text="CREATED BY FR3NCH" 
+                t2.TextColor3=Color3.fromRGB(255,0,0) 
+                t2.TextStrokeTransparency=0.5 
+                t2.TextScaled=true 
+                t2.Font=Enum.Font.GothamBold 
+                task.delay(10,function() if sg2 then sg2:Destroy() end end) 
+
+                task.wait(4) 
+                RestartGame:InvokeServer() 
+                task.wait(0.5) 
+                PlaceDifficultyVote:InvokeServer("dif_impossible") 
+                task.wait(24) 
+                PlaceUnit:InvokeServer("unit_lawnmower",{Valid=true,PathIndex=3,Position=Vector3.new(-853.861,62.18,-123.052),DistanceAlongPath=238.019,Rotation=180,CF=CFrame.new(-853.861,62.18,-123.052,0,0,1,0,1,0,-1,0,0)}) 
+                task.wait(7) 
+                PlaceUnit:InvokeServer("unit_rafflesia",{Valid=true,PathIndex=3,Position=Vector3.new(-842.381,62.18,-165.351),DistanceAlongPath=177.201,Rotation=180,CF=CFrame.new(-842.381,62.18,-165.351,1,0,0,0,1,0,0,0,1)}) 
+                task.wait(18.5) 
+                PlaceUnit:InvokeServer("unit_rafflesia",{Valid=true,PathIndex=3,Position=Vector3.new(-842.381,62.18,-165.351),DistanceAlongPath=178.423,Rotation=180,CF=CFrame.new(-842.381,62.18,-164.129,1,0,0,0,1,0,0,0,1)}) 
+                task.wait(20) 
+                PlaceUnit:InvokeServer("unit_rafflesia",{Valid=true,PathIndex=2,Position=Vector3.new(-857.381,62.18,-248.856),DistanceAlongPath=6.196,Rotation=180,CF=CFrame.new(-857.381,62.18,-248.856,1,0,0,0,1,0,0,0,1)}) 
+                task.wait(49.5) 
+            end 
+        end
