@@ -1,12 +1,3 @@
-{
-  "keys": [
-    {
-      "key": "ABC123",
-      "expired": "2027-12-31"
-    },
-    {
-      "key": "XYZ789",
-      "expired": "2027-01-15"
-    }
-  ]
-}
+local keyA = "cool key"
+
+return keyA
